@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-lzwsey
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-lzwsey
+  namespace: my-nginx-lzwsey
+  labels:
+    name: nginx-lzwsey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-lzwsey
+  template:
+    metadata:
+      namespace: my-nginx-lzwsey
+      labels:
+        name: nginx-lzwsey
+    spec:
+      containers:
+      - name: nginx-lzwsey
+        image: nginx
+        ports:
+        - containerPort: 80
+
